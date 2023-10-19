@@ -36,3 +36,34 @@ df.index = pd.to_datetime(df.index)
 # Rename columns for clarity
 df.columns = ['Open', 'High', 'Low', 'Close', 'Volume']
 print(df)
+
+import matplotlib.pyplot as plt
+df.columns
+from sklearn.svm import SVC
+from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+import numpy as np
+
+X = df[['Open', 'High', 'Low', 'Volume']]
+print(X)
+
+y = df['Close']
+y
+
+def score(model, X_train, X_test, y_train, y_test):
+    model.fit(X_train,y_train)
+    print(model.score(X_test,y_test))
+
+le = LinearRegression()
+lgr = LogisticRegression()
+scv = SVC()
+frst = RandomForestClassifier(n_estimators=50)
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=42)
+score(le, X_train, X_test, y_train, y_test)
+score(lgr, X_train, X_test, y_train, y_test)
+score(scv, X_train, X_test, y_train, y_test)
+score(frst, X_train, X_test, y_train, y_test)
