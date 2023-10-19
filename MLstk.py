@@ -13,7 +13,7 @@ def get_data(stock_symbol):
 
         return None
 
-
+# Add user input stock symbol
 stock_symbol = 'TCS'
 
 data = get_data(stock_symbol)
