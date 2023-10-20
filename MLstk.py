@@ -13,7 +13,7 @@ def get_data(stock_symbol):
 
         return None
 
-# Add user input stock symbol
+
 stock_symbol = 'TCS'
 
 data = get_data(stock_symbol)
@@ -27,13 +27,13 @@ else:
 
 import pandas as pd
 
-# Convert the JSON data into a Pandas DataFrame
+
 df = pd.DataFrame(data['Time Series (5min)']).T
 
-# Convert timestamps to datetime objects
+
 df.index = pd.to_datetime(df.index)
 
-# Rename columns for clarity
+
 df.columns = ['Open', 'High', 'Low', 'Close', 'Volume']
 print(df)
 
