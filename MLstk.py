@@ -49,7 +49,7 @@ X = df[['Open', 'High', 'Low', 'Volume']]
 print(X)
 
 y = df['Close']
-y
+print(y)
 
 def score(model, X_train, X_test, y_train, y_test):
     model.fit(X_train,y_train)
@@ -67,3 +67,27 @@ score(le, X_train, X_test, y_train, y_test)
 score(lgr, X_train, X_test, y_train, y_test)
 score(scv, X_train, X_test, y_train, y_test)
 score(frst, X_train, X_test, y_train, y_test)
+
+y_pred = le.predict(X)
+df['pred'] = pd.DataFrame(data={'pred': y_pred}, index=df.index)
+print(df)
+
+
+df['Close'] = df['Close'].astype(float)
+
+%matplotlib inline
+import matplotlib.pyplot as plt
+
+plt.plot(df.index, df['Close'], color="green", label="Actual")
+plt.plot(df.index, df['pred'], color="red", label="Predicted")
+
+
+
+
+plt.xlabel('Time')
+plt.ylabel('Close Price')
+plt.title('Actual vs. Predicted Close Prices')
+plt.legend()
+plt.xticks(rotation=75)
+
+plt.show()
