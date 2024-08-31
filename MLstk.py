@@ -2,7 +2,7 @@ import requests
 
 
 def get_data(stock_symbol):
-    url = f'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={stock_symbol}&interval=5min&apikey=3KAFN4YVX9POWDJ7'
+    url = f'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={stock_symbol}&interval=5min&apikey=key'
 
     r = requests.get(url)
 
